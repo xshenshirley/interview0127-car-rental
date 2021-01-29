@@ -39,12 +39,12 @@ public class StockTracker {
                 // In the case of returned cars
                 case RETURN:
                     newStock = currentStock + quantity;
-                    checkIfRentRequestMatchesStock(carModel, quantity, currentStock, newStock);
+                    checkIfRentRequestMatchesStock(carModel, quantity, currentStock, newStock, action);
                     break;
                 // In the case of rent cars
                 case RENT:
                     newStock = currentStock - quantity;
-                    checkIfRentRequestMatchesStock(carModel, quantity, currentStock, newStock);
+                    checkIfRentRequestMatchesStock(carModel, quantity, currentStock, newStock, action);
                     break;
                 default:
                     log.info("Action Invalid");
@@ -61,13 +61,13 @@ public class StockTracker {
     }
 
     // Identify if new rent/return requests can be fulfilled based on current stock
-    private void checkIfRentRequestMatchesStock(String carModel, int quantity, int currentStock, int newStock) throws RentalCarLimitExceededException {
+    private void checkIfRentRequestMatchesStock(String carModel, int quantity, int currentStock, int newStock, CarRentalConstants.StockAdjustInstruction action) throws RentalCarLimitExceededException {
         if (newStock < 0) {
             final String errorMessage = "not enough cars for rent in store";
-            throw new RentalCarLimitExceededException(carModel, quantity, errorMessage);
+            throw new RentalCarLimitExceededException(carModel, quantity, errorMessage, action);
         } else if (newStock > currentStock && newStock > initialStock.get(carModel)) {
             final String errorMessage = "invalid operation, car limit exceed";
-            throw new RentalCarLimitExceededException(carModel, quantity, errorMessage);
+            throw new RentalCarLimitExceededException(carModel, quantity, errorMessage, action);
         }
     }
 

@@ -54,7 +54,7 @@ public class StockTrackerTest {
             stockTracker.modifyStockDetails("Toyota Camry", 1, CarRentalConstants.StockAdjustInstruction.RENT);
             stockTracker.modifyStockDetails("Toyota Camry", 1, CarRentalConstants.StockAdjustInstruction.RENT);
         } catch (RentalCarLimitExceededException e) {
-            Assert.assertEquals(e.getErrorMessage(), "Could not rent Car Model Toyota Camry with quantity 1, due to not enough cars for rent in store");
+            Assert.assertEquals(e.getErrorMessage(), "Could not RENT Car Model Toyota Camry with quantity 1, due to not enough cars for rent in store");
         }
 
         Map<String, CarStockDetail> currentStock = stockTracker.getAllCurrentStockDetails();
@@ -67,7 +67,7 @@ public class StockTrackerTest {
         try {
             stockTracker.modifyStockDetails("Toyota Camry", 1, CarRentalConstants.StockAdjustInstruction.RETURN);
         } catch (RentalCarLimitExceededException e) {
-            Assert.assertEquals(e.getErrorMessage(), "Could not rent Car Model Toyota Camry with quantity 1, due to invalid operation, car limit exceed");
+            Assert.assertEquals(e.getErrorMessage(), "Could not RETURN Car Model Toyota Camry with quantity 1, due to invalid operation, car limit exceed");
         }
 
         Map<String, CarStockDetail> currentStock = stockTracker.getAllCurrentStockDetails();

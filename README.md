@@ -19,8 +19,8 @@ example contract:
 
 Example Failure Scenarios:
 
-a)	Could not rent Car Model Toyota Camry with quantity 1, due to not
+a)	Could not rent Car Model Toyota Camry, due to not
 enough cars for rent in store
 
-b) Could not rent Car Model Toyota Camry with quantity 1, due to invalid      operation, car limit exceed
+b) Could not return Car Model Toyota Camry, due to invalid      operation, car limit exceed
 
