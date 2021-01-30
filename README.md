@@ -17,7 +17,14 @@ example contract:
     "instruction": "RENT" //Instruction for RENT/RETURN cars
 }
 
-Example Failure Scenarios:
+# Local Setup
+
+* Clone this repo to your local computer **`git clone https://github.com/xshenshirley/interview0127-car-rental.git`**
+* run **`mvn spring-boot:run`** from the cloned repo's root directory
+* Open your browser and go to Swagger UI [**`http://localhost:8080/swagger-ui.html#/`**](http://localhost:8080/swagger-ui.html#/) or test with [**`http://localhost:8080`**](http://localhost:8080)
+
+
+# Example Failure Scenarios:
 
 a)	Could not rent Car Model Toyota Camry, due to not
 enough cars for rent in store

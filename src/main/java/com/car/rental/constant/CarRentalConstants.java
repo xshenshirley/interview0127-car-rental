@@ -6,7 +6,7 @@ public class CarRentalConstants {
     public static final String BMW_650 = "BMW 650";
 
     public static enum StockAdjustInstruction {
-        RETURN,
-        RENT;
+        RENT,
+        RETURN;
     }
 }

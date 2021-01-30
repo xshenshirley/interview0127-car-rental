@@ -5,6 +5,9 @@ import com.car.rental.model.CarRentalRequest;
 import com.car.rental.model.CarStockDetail;
 import com.car.rental.model.CarStockDetailsResponse;
 import com.car.rental.service.CarBookingService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(path="/api")
+@Api(value = "/api")
 public class CarRentalController {
 
     @Autowired
@@ -28,10 +32,13 @@ public class CarRentalController {
      *
      **/
     @RequestMapping(path="/getAllCarsInStock", method= RequestMethod.GET)
+    @ApiOperation(value = "Get All Cars In Stock",
+            response = CarStockDetailsResponse.class
+    )
     public CarStockDetailsResponse getAllInStockCars(){
         CarStockDetailsResponse carStockDetailsResponse= new CarStockDetailsResponse();
         carStockDetailsResponse.setCarStockDetails(carBookingService.getAllInStockCars());
-
+        carStockDetailsResponse.setSuccess(true);
         return carStockDetailsResponse;
     }
 
@@ -44,7 +51,10 @@ public class CarRentalController {
      **/
     @PostMapping(path="/rentCars", produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public CarStockDetailsResponse rentCarsInStock(@RequestBody final CarRentalRequest carRentalRequest){
+    @ApiOperation(value = "Rent/Return Cars In Stock",
+            response = CarStockDetailsResponse.class
+    )
+    public CarStockDetailsResponse rentCarsInStock(@RequestBody @ApiParam(value = "parameter") final CarRentalRequest carRentalRequest){
         CarStockDetailsResponse carStockDetailsResponse= new CarStockDetailsResponse();
 
         try {
