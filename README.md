@@ -2,6 +2,9 @@
 
 A basic Car Rental Application allows user to view current stock of cars, and rent or return cars based on requirement
 
+# Azure App Link
+https://xy-car-rental.azurewebsites.net/swagger-ui.html
+
 # Service API Details
 
 a) GET: getAllCarsInStock – Provides user with details of cars that are currently in stock for rent
