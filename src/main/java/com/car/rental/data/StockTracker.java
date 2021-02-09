@@ -20,6 +20,7 @@ public class StockTracker {
 
     @Autowired
     Map<String, Integer> initialStock;
+    
 
     private final Map<String, CarStockDetail> inStockCarStockDetails = new HashMap<String, CarStockDetail>() {
         {
